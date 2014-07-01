@@ -10,7 +10,7 @@
 * and count takes constant time.
 */
 
-#include "stdafx.h"
+//#include "stdafx.h"
 #include <vector>
 
 class WeightedQuickUnionUF {

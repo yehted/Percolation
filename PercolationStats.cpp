@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "PercolationStats.h"
 #include "Stats.h"
 #include <time.h>
@@ -13,9 +13,9 @@ PercolationStats::PercolationStats(int N, int T): results(T), trials(T) {
 	}
 
 	double threshold;
-	int x = 0, y = 1;
+	int x, y;
 	for (int i = 0; i < T; i++) {
-		Percolation perc = Percolation(N);		
+		Percolation perc(N);		
 		threshold = 0;
 		while (!perc.percolates()) {
 			do {
@@ -47,8 +47,11 @@ double PercolationStats::confidenceHi() {
 
 int main(int argc, char *argv[]) {
 	using namespace std;
-	int N = atoi(argv[1]);
-	int T = atoi(argv[2]);
+//	int N = atoi(argv[1]);
+//	int T = atoi(argv[2]);
+	int N, T;
+	cin >> N;
+	cin >> T;
 	PercolationStats test(N, T);
 	cout << "mean = " << test.mean() << endl;
 	cout << "stddev = " << test.stddev() << endl;
