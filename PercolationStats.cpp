@@ -1,20 +1,17 @@
 #include "stdafx.h"
 #include "PercolationStats.h"
 #include "Stats.h"
-#include <iostream>
 #include <time.h>
-using namespace std;
+#include <iostream>
 
 PercolationStats::PercolationStats(): trials(0) {}
 
-PercolationStats::PercolationStats(int N, int T) {
-	srand(time(0));
+PercolationStats::PercolationStats(int N, int T): results(T), trials(T) {
+	srand((unsigned int) time(NULL));
 	if (N < 1 || T < 1) {
-		cerr << "N and T must be greater than 1" << endl;
-		exit(1);
+		throw std::invalid_argument("Invalid argument");
 	}
-	results = vector<double> (T);
-	trials = T;
+
 	double threshold;
 	int x = 0, y = 1;
 	for (int i = 0; i < T; i++) {
@@ -22,11 +19,9 @@ PercolationStats::PercolationStats(int N, int T) {
 		threshold = 0;
 		while (!perc.percolates()) {
 			do {
-//				x++;
 				x = rand() % N + 1;
 				y = rand() % N + 1;
 			} while (perc.isOpen(x, y));
-//			cout << x << " " << y << endl;
 			perc.open(x, y);
 			threshold++;
 		}
@@ -51,10 +46,10 @@ double PercolationStats::confidenceHi() {
 }
 
 int main(int argc, char *argv[]) {
+	using namespace std;
 	int N = atoi(argv[1]);
 	int T = atoi(argv[2]);
-//	cout << N << " " << T << endl;
-	PercolationStats test = PercolationStats(N, T);
+	PercolationStats test(N, T);
 	cout << "mean = " << test.mean() << endl;
 	cout << "stddev = " << test.stddev() << endl;
 	cout << "95% confidence interval = " << test.confidenceLo() << ", " << test.confidenceHi() << endl;

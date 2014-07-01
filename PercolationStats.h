@@ -13,6 +13,6 @@ public:
 	static int main(int argc, char *argv[]);	// test client, described below
 
 private:
-	vector<double> results;
+	std::vector<double> results;
 	double trials;
 };

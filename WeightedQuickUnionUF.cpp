@@ -1,16 +1,12 @@
 #include "stdafx.h"
 #include "WeightedQuickUnionUF.h"
+#include <iostream>
 
 // Default constructor
 WeightedQuickUnionUF::WeightedQuickUnionUF(): n_count(0) {}
 
 // Initializes an empty union-find data structure with N isolated components 0 through N-1.
-WeightedQuickUnionUF::WeightedQuickUnionUF(int N) {
-	n_count = N;
-	id = new int[N];
-	sz = new int[N];
-//	id = vector<int>(N);
-//	sz = vector<int>(N);
+WeightedQuickUnionUF::WeightedQuickUnionUF(int N): n_count(N), id(N), sz(N) {	
 	for (int i = 0; i < N; i++) {
 		id[i] = i;
 		sz[i] = i;

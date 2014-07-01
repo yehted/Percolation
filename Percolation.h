@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "WeightedQuickUnionUF.h"
-#include <iostream>
 #include <stdexcept>
-using namespace std;
+#include <iostream>
+#include <vector>
 
 class Percolation {
 public:
@@ -17,8 +17,7 @@ private:
 	int gridSize;
 	WeightedQuickUnionUF grid;
 	WeightedQuickUnionUF grid2;
-	bool *site;
-//	vector<bool> site;
+	std::vector<bool> site;
 	int bottom;
 	int xyTo1D(int i, int j);			// converts (i, j) coordinates to 1D vector index
 	bool isValidIndex(int i, int j);	// checks if (i, j) is valid coordinate

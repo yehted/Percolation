@@ -1,14 +1,13 @@
 #include "stdafx.h"
 #include <math.h>
 #include <vector>
-using namespace std;
 
 class Stats {
 public:
-	static double sum(vector<double> x);
-	static double mean(vector<double> x);
-	static double stddev(vector<double> x);
-	static double var(vector<double> x);
+	static double sum(std::vector<double> x);
+	static double mean(std::vector<double> x);
+	static double stddev(std::vector<double> x);
+	static double var(std::vector<double> x);
 
 private:
 	Stats();

@@ -12,8 +12,6 @@
 
 #include "stdafx.h"
 #include <vector>
-#include <iostream>
-using namespace std;
 
 class WeightedQuickUnionUF {
 public:
@@ -25,9 +23,7 @@ public:
 	void unite(int p, int q);		// Merges the component containing site p with the component containing site q
 
 private:
-//	vector<int> id;
-//	vector<int> sz;
-	int *id;						// id[i] = parent of i
-	int *sz;						// sz[i] = number of objects in subtree rooted at i
+	std::vector<int> id;			// id[i] = parent of i
+	std::vector<int> sz;			// sz[i] = number of objects in subtree rooted at i
 	int n_count;					// number of components
 };

@@ -3,13 +3,7 @@
 
 Percolation::Percolation(): gridSize(0) {}
 
-Percolation::Percolation(int N) {
-	gridSize = N;
-	grid = WeightedQuickUnionUF(N*N + 2);
-	grid2 = WeightedQuickUnionUF(N*N + 1);
-//	site = vector<bool>(N*N+1,false);
-	site = new bool[N*N + 1]();
-	bottom = N*N + 1;
+Percolation::Percolation(int N): gridSize(N), grid(N*N+2), grid2(N*N+1), site(N*N+1), bottom(N*N+1) {
 }
 
 int Percolation::xyTo1D(int i, int j) {
@@ -22,7 +16,7 @@ bool Percolation::isValidIndex(int i, int j) {
 
 void Percolation::open(int i, int j) {
 	if (!isValidIndex(i, j)) {
-		throw invalid_argument("Index out of bounds1");
+		throw std::out_of_range("Index out of bounds");
 	}
 	int id = xyTo1D(i, j);
 	site[id] = true;
@@ -54,8 +48,7 @@ void Percolation::open(int i, int j) {
 
 bool Percolation::isOpen(int i, int j) {
 	if (!isValidIndex(i, j)) {
-		cout << i << " " << j << endl;
-		throw invalid_argument("Index out of bounds2");
+		throw std::out_of_range("Index out of bounds");
 	}
 	return (site[xyTo1D(i, j)]);
 }
