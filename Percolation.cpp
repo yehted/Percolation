@@ -1,9 +1,47 @@
-//#include "stdafx.h"
 #include "Percolation.h"
+#include <stdexcept>
+#include <iostream>
 
 Percolation::Percolation(): gridSize(0) {}
 
-Percolation::Percolation(int N): gridSize(N), grid(N*N+2), grid2(N*N+1), site(N*N+1, 0), bottom(N*N+1) {
+Percolation::Percolation(int N) : gridSize(N), grid(N*N + 2), 
+	grid2(N*N + 1), bottom(N*N + 1), site(new bool[N*N + 1]())
+{}
+
+Percolation::~Percolation() {
+	delete[] site;
+}
+
+Percolation::Percolation(const Percolation &that) : gridSize(that.gridSize), 
+	grid(that.grid), grid2(that.grid2), bottom(that.bottom), 
+	site(new bool[that.gridSize * that.gridSize + 1]())
+{	
+	int N = that.gridSize * that.gridSize + 1;
+	for (int i = 0; i < N; i++)
+		site[i] = that.site[i];
+}
+
+Percolation &Percolation::operator=(const Percolation &that) {
+	// Check for self assignment
+	if (this == &that) return *this;
+	
+	// Deallocate old memory
+	delete[] site;
+	
+	// Allocate new memory and copy elements
+	int N = that.gridSize * that.gridSize + 1;
+	bool *new_site = new bool[N];
+	for (int i = 0; i < N; i++)
+		new_site[i] = that.site[i];
+	
+	// Assignm new memory
+	site = new_site;
+	gridSize = that.gridSize;
+	grid = that.grid;
+	grid2 = that.grid2;
+	bottom = that.bottom;
+	
+	return *this;
 }
 
 int Percolation::xyTo1D(int i, int j) {
@@ -19,7 +57,7 @@ void Percolation::open(int i, int j) {
 		throw std::out_of_range("Index out of bounds");
 	}
 	int id = xyTo1D(i, j);
-	site[id] = 1;
+	site[id] = true;
 
 	if (isValidIndex(i-1, j) && isOpen(i-1, j)) {
 		grid.unite(id, xyTo1D(i-1,j));
@@ -51,7 +89,7 @@ bool Percolation::isOpen(int i, int j) {
 		throw std::out_of_range("Index out of bounds");
 	}
 	int id = xyTo1D(i, j);
-	return (site[id] == 1);
+	return (site[id]);
 }
 
 bool Percolation::isFull(int i, int j) {
