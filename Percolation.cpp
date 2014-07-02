@@ -3,7 +3,7 @@
 
 Percolation::Percolation(): gridSize(0) {}
 
-Percolation::Percolation(int N): gridSize(N), grid(N*N+2), grid2(N*N+1), site(N*N+1), bottom(N*N+1) {
+Percolation::Percolation(int N): gridSize(N), grid(N*N+2), grid2(N*N+1), site(N*N+1, 0), bottom(N*N+1) {
 }
 
 int Percolation::xyTo1D(int i, int j) {
@@ -19,7 +19,7 @@ void Percolation::open(int i, int j) {
 		throw std::out_of_range("Index out of bounds");
 	}
 	int id = xyTo1D(i, j);
-	site[id] = true;
+	site[id] = 1;
 
 	if (isValidIndex(i-1, j) && isOpen(i-1, j)) {
 		grid.unite(id, xyTo1D(i-1,j));
@@ -50,7 +50,8 @@ bool Percolation::isOpen(int i, int j) {
 	if (!isValidIndex(i, j)) {
 		throw std::out_of_range("Index out of bounds");
 	}
-	return (site[xyTo1D(i, j)]);
+	int id = xyTo1D(i, j);
+	return (site[id] == 1);
 }
 
 bool Percolation::isFull(int i, int j) {

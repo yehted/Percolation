@@ -17,7 +17,7 @@ private:
 	int gridSize;
 	WeightedQuickUnionUF grid;
 	WeightedQuickUnionUF grid2;
-	std::vector<bool> site;
+	std::vector<char> site;
 	int bottom;
 	int xyTo1D(int i, int j);			// converts (i, j) coordinates to 1D vector index
 	bool isValidIndex(int i, int j);	// checks if (i, j) is valid coordinate
