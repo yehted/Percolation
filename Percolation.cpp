@@ -34,7 +34,7 @@ Percolation &Percolation::operator=(const Percolation &that) {
 	for (int i = 0; i < N; i++)
 		new_site[i] = that.site[i];
 	
-	// Assignm new memory
+	// Assign new memory
 	site = new_site;
 	gridSize = that.gridSize;
 	grid = that.grid;
