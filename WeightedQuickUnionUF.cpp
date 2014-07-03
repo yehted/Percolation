@@ -1,6 +1,4 @@
-//#include "stdafx.h"
 #include "WeightedQuickUnionUF.h"
-#include <iostream>
 
 // Default constructor
 WeightedQuickUnionUF::WeightedQuickUnionUF(): n_count(0) {}

@@ -1,4 +1,8 @@
-//#include "stdafx.h"
+/*
+Stats class
+Requires vector<double>
+Returns, sum, mean, standard deviation, and double
+*/
 #include <math.h>
 #include <vector>
 

@@ -1,4 +1,9 @@
-//#include "stdafx.h"
+/*
+This class implements a monte carlo simulation of the percolation class.
+It creates T instances of percolation class of NxN size and
+returns the mean, standard deviation, and confidence interval
+of the percolation threshold.
+*/
 #include "Percolation.h"
 #include <vector>
 

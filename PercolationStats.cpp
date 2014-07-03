@@ -1,4 +1,3 @@
-//#include "stdafx.h"
 #include "PercolationStats.h"
 #include "Stats.h"
 #include <time.h>
@@ -48,13 +47,15 @@ double PercolationStats::confidenceHi() {
 int main(int argc, char *argv[]) {
 	using namespace std;
 	int N, T;
-	if (argc == 0) {
-		cin >> N;
-		cin >> T;
-	}
-	else {
+	if (argc == 3) {
 		N = atoi(argv[1]);
 		T = atoi(argv[2]);
+	}
+	else {
+		cout << "Size of grid (N): ";
+		cin >> N;
+		cout << "Number of trials (T): ";
+		cin >> T;		
 	}		
 	
 	PercolationStats test(N, T);
