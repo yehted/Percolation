@@ -15,8 +15,7 @@ public:
 private:
 	int gridSize;
 	WeightedQuickUnionUF grid;
-	WeightedQuickUnionUF grid2;
-	//std::vector<char> site;
+	WeightedQuickUnionUF grid2;			// for visualizer to prevent backwash
 	bool *site;
 	int bottom;
 	int xyTo1D(int i, int j);			// converts (i, j) coordinates to 1D vector index

@@ -47,11 +47,16 @@ double PercolationStats::confidenceHi() {
 
 int main(int argc, char *argv[]) {
 	using namespace std;
-//	int N = atoi(argv[1]);
-//	int T = atoi(argv[2]);
 	int N, T;
-	cin >> N;
-	cin >> T;
+	if (argc == 0) {
+		cin >> N;
+		cin >> T;
+	}
+	else {
+		N = atoi(argv[1]);
+		T = atoi(argv[2]);
+	}		
+	
 	PercolationStats test(N, T);
 	cout << "mean = " << test.mean() << endl;
 	cout << "stddev = " << test.stddev() << endl;
