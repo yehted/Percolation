@@ -21,7 +21,7 @@ Percolation::Percolation(const Percolation &that) : gridSize(that.gridSize),
 		site[i] = that.site[i];
 }
 
-Percolation &Percolation::operator=(const Percolation &that) {
+Percolation& Percolation::operator=(const Percolation &that) {
 	// Check for self assignment
 	if (this == &that) return *this;
 	

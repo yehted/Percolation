@@ -1,4 +1,5 @@
 #include "Stats.h"
+#include <math.h>
 using namespace std;
 
 double Stats::sum(const vector<double> &x) {

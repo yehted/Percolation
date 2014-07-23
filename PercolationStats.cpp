@@ -2,6 +2,7 @@
 #include "Stats.h"
 #include <time.h>
 #include <iostream>
+#include <vld.h>
 
 PercolationStats::PercolationStats(): trials(0) {}
 
